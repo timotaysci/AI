@@ -9,6 +9,7 @@ reps = [1,2,3,4,5,6,7,8,9,10]
 x =  np.arange(0.1,1.1,0.05)
 xr = []
 y = []
+res = []
 
 openai.api_key = "APIKey"
 model_engine = "davinci"
@@ -34,9 +35,10 @@ for k in x:
           t1 = time.time()
           y.append(t1-t0)
           xr.append(k)
+          res.append(response)
 
 with open('AL4500.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['Temprture', 'Time (s)'])
-    for x, y in zip(xr, y):
-        writer.writerow([x, y])
+    for x, y, z in zip(xr, y, red):
+        writer.writerow([x, y, z])
